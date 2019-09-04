@@ -174,9 +174,9 @@ public class Bytes {
      * @return byte[].
      */
     public static byte[] long2bytes(long v) {
-        byte[] ret = {0, 0, 0, 0, 0, 0, 0, 0};
-        long2bytes(v, ret);
-        return ret;
+        byte[] NomeMaisSugestivo = {0, 0, 0, 0, 0, 0, 0, 0};
+        long2bytes(v, NomeMaisSugestivo);
+        return NomeMaisSugestivo;
     }
 
     /**
