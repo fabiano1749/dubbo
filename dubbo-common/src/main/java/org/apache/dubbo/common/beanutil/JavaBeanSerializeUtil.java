@@ -386,19 +386,24 @@ public final class JavaBeanSerializeUtil {
         return null;
     }
 
-    private static Object instantiateForDeserialize(JavaBeanDescriptor beanDescriptor, ClassLoader loader,
-                                                    IdentityHashMap<JavaBeanDescriptor, Object> cache) {
-        if (cache.containsKey(beanDescriptor)) {
-            return cache.get(beanDescriptor);
-        }
-
-        if (beanDescriptor.isClassType()) {
+    private static void instantiateForDeserializeFirstIf(JavaBeanDescriptor beanDescriptor, ClassLoader loader){
+         if (beanDescriptor.isClassType()) {
             try {
                 return name2Class(loader, beanDescriptor.getClassNameProperty());
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e.getMessage(), e);
             }
         }
+    }
+    
+    
+    private static Object instantiateForDeserialize(JavaBeanDescriptor beanDescriptor, ClassLoader loader,
+                                                    IdentityHashMap<JavaBeanDescriptor, Object> cache) {
+        if (cache.containsKey(beanDescriptor)) {
+            return cache.get(beanDescriptor);
+        }
+        
+        instantiateForDeserializeFirstIf(beanDescriptor, loader);       
 
         if (beanDescriptor.isEnumType()) {
             try {
@@ -480,5 +485,4 @@ public final class JavaBeanSerializeUtil {
     private static Method getEnumValueOfMethod(Class cl) throws NoSuchMethodException {
         return cl.getMethod("valueOf", Class.class, String.class);
     }
-
 }
