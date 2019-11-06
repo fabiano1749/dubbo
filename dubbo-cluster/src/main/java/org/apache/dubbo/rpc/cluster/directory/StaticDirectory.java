@@ -106,3 +106,12 @@ public class StaticDirectory<T> extends AbstractDirectory<T> {
     }
 
 }
+
+public class RouterChainSOM extends RouterChain(){
+     @Override
+     public static RouterChain  buildChain(String url){
+         return new RouterChain();
+    }
+}
+
+
