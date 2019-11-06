@@ -104,7 +104,7 @@ public abstract class ListenableRouter extends AbstractRouter implements Configu
         return routerRule != null && routerRule.isValid() && routerRule.isRuntime();
     }
 
-    private void generateConditions(ConditionRouterRule rule) {
+    private void generateConditions(ConditionRouterRuleInterface rule) {
         if (rule != null && rule.isValid()) {
             this.conditionRouters = rule.getConditions()
                     .stream()
@@ -125,3 +125,37 @@ public abstract class ListenableRouter extends AbstractRouter implements Configu
         }
     }
 }
+
+ConditionRouterRule
+
+public interface ConditionRouterRuleInterface{
+
+    public boolean isValid();
+    
+    public ConditionsRouters getConditions();
+    
+    public isForce();
+        
+    public isEnabled();
+
+}
+
+public class  ConditionRouterRuleFake implements  ConditionRouterRuleInterface{
+
+    public boolean isValid();
+    
+    public ConditionsRouters getConditions();
+    
+    public isForce();
+        
+    public isEnabled();
+
+}
+
+
+
+
+
+
+
+
