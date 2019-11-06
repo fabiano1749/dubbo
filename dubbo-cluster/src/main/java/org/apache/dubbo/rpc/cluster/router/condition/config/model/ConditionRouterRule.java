@@ -23,7 +23,7 @@ import java.util.List;
 /**
  *
  */
-public class ConditionRouterRule extends AbstractRouterRule {
+public class ConditionRouterRule extends AbstractRouterRule implements ConditionRouterRuleInterface{
     public ConditionRouterRule() {
     }
 
